@@ -19,7 +19,10 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private AccountType accountType;
+    @Enumerated(EnumType.STRING)
+    private AccountStatus accountStatus;
     private double balance;
     private double beginBalance;
     private LocalDateTime beginBalanceTime;
