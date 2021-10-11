@@ -23,6 +23,6 @@ public class Account {
     private double balance;
     private double beginBalance;
     private LocalDateTime beginBalanceTime;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "account")
     private List<Transaction> transaction;
 }

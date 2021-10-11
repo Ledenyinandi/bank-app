@@ -22,5 +22,5 @@ public class Transaction {
     private double amount;
     private String description;
     @ManyToOne
-    private Customer customer;
+    private Account account;
 }
