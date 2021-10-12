@@ -26,6 +26,6 @@ public class Customer {
     private String zip;
     private String phoneNumber;
     private String email;
-    @ManyToMany
+    @ManyToMany(mappedBy = "customers")
     private List<Account> accounts;
 }

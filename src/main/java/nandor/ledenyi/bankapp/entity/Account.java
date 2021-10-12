@@ -27,6 +27,12 @@ public class Account {
     private double balance;
     private double beginBalance;
     private LocalDateTime beginBalanceTime;
+    @ManyToMany
+    private List<Customer> customers;
     @OneToMany(mappedBy = "account")
     private List<Transaction> transaction;
+
+    public void addCustomer(Customer customer) {
+        customers.add(customer);
+    }
 }
