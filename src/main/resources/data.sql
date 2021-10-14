@@ -6,6 +6,3 @@ values ('12345678-98765432-00000000', 'CHECKING', 'ACTIVE', 10000.0, 10000.0, cu
 
 insert into account (account_number, account_type, account_status, balance, begin_balance, begin_time, customer_id)
 values ('12345678-98765432-23459876', 'CHECKING', 'ACTIVE', 12000.0, 12000.0, current_timestamp, 1);
-
--- insert into account_customers (accounts_id, customers_id) values (1, 1);
--- insert into account_customers (accounts_id, customers_id) values (2, 1);
