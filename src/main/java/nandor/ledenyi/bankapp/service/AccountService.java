@@ -1,6 +1,7 @@
 package nandor.ledenyi.bankapp.service;
 
 import nandor.ledenyi.bankapp.entity.Account;
+import nandor.ledenyi.bankapp.exception.AccountNumberNotFoundException;
 import nandor.ledenyi.bankapp.exception.EntityNotFoundException;
 import nandor.ledenyi.bankapp.repository.AccountRepository;
 import nandor.ledenyi.bankapp.repository.CustomerRepository;
@@ -42,5 +43,16 @@ public class AccountService {
 
     public void deleteById(Long id) {
         accountRepository.deleteById(id);
+    }
+
+    public double getBalanceByAccountNumber(String accountNumber) {
+        if (findAll().stream().noneMatch(account -> account.getAccountNumber().equals(accountNumber))) {
+            throw new AccountNumberNotFoundException();
+        }
+        return accountRepository.getBalanceByAccountNumber(accountNumber);
+    }
+
+    public double getBalanceById(Long id) {
+        return findById(id).getBalance();
     }
 }

@@ -35,8 +35,4 @@ public class Account {
     @JsonIgnore
     @OneToMany(mappedBy = "account")
     private List<Transaction> transaction;
-
-//    public void addCustomer(Customer customer) {
-//        customers.add(customer);
-//    }
 }

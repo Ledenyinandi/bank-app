@@ -41,4 +41,14 @@ public class AccountController {
     public void deleteById(@PathVariable("id") Long id) {
         accountService.deleteById(id);
     }
+
+    @GetMapping("/balance")
+    public double getBalanceByAccountNumber(@RequestParam String accountNumber) {
+        return accountService.getBalanceByAccountNumber(accountNumber);
+    }
+
+    @GetMapping("/balance/{id}")
+    public double getBalanceById(@PathVariable Long id) {
+        return accountService.getBalanceById(id);
+    }
 }
