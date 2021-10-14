@@ -1,25 +1,40 @@
-# Read Me First
-The following was discovered as part of building this project:
+## Description
 
-* The original package name 'nandor.ledenyi.bank-app' is invalid and this project uses 'nandor.ledenyi.bankapp' instead.
+This is a simple banking application, that handles *customers*, *accounts* and *transactions*.
 
-# Getting Started
+### You can
 
-### Reference Documentation
-For further reference, please consider the following sections:
+- do CRUD methods on entities
+- deposit to account
+- withdraw from account
+- transfer between accounts
+- get the balance of accounts
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.5/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.5.5/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-* [Validation](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#boot-features-validation)
+### How to try
 
-### Guides
-The following guides illustrate how to use some features concretely:
+You can try it in Postman. If you want to create a new entity, you don't have to give an id, only the other fields.
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+Transaction examples (JSON):
 
+- **deposit**:
+
+  "fromAccountId": null,
+  "toAccountId": 1,
+  "amount": 8000
+
+- **withdraw**:
+
+  "fromAccountId": 1,
+  "toAccountId": null,
+  "amount": 5000
+
+- **transfer**:
+
+  "fromAccountId": 1,
+  "toAccountId": 2,
+  "amount": 3000
+
+Get account balance:
+
+- with account number: `/account/balance?accountNumber=...`
+- with account id: `/account/balance/..`
