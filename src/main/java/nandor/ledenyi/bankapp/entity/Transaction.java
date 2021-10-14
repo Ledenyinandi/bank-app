@@ -23,4 +23,11 @@ public class Transaction {
     private String description;
     @ManyToOne
     private Account account;
+
+    public Transaction(LocalDateTime transactionTime, double amount, String description, Account account) {
+        this.transactionTime = transactionTime;
+        this.amount = amount;
+        this.description = description;
+        this.account = account;
+    }
 }
