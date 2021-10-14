@@ -28,4 +28,9 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<String> handleIdenticalIdException() {
         return ResponseEntity.badRequest().body("Identical ids!");
     }
+
+    @ExceptionHandler(value = AccountNumberNotFoundException.class)
+    public ResponseEntity<String> handleAccountNumberNotFoundException() {
+        return ResponseEntity.badRequest().body("Account number not found!");
+    }
 }
