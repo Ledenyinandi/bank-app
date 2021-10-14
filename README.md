@@ -12,7 +12,7 @@ This is a simple banking application, that handles *customers*, *accounts* and *
 
 ### How to try
 
-You can try it in Postman. If you want to create a new entity, you don't have to give an id, only the other fields.
+In Postman. If you want to create a new entity, you don't have to give an id, only the other fields.
 
 Transaction examples (JSON):
 
@@ -38,3 +38,5 @@ Get account balance:
 
 - with account number: `/account/balance?accountNumber=...`
 - with account id: `/account/balance/..`
+
+Or you can try it in Swagger: <http://localhost:8080/swagger-ui.html>
