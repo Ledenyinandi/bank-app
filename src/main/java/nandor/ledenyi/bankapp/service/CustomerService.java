@@ -1,6 +1,5 @@
 package nandor.ledenyi.bankapp.service;
 
-import nandor.ledenyi.bankapp.entity.Account;
 import nandor.ledenyi.bankapp.entity.Customer;
 import nandor.ledenyi.bankapp.exception.EntityNotFoundException;
 import nandor.ledenyi.bankapp.repository.CustomerRepository;
@@ -29,15 +28,12 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public Customer update(Customer customer, Long id) {
+        customer.setId(id);
+        return save(customer);
+    }
+
     public void deleteById(Long id) {
         customerRepository.deleteById(id);
-    }
-
-    public List<Customer> findCustomersByAccount(Long accountId) {
-        return customerRepository.findCustomersByAccounts(accountId);
-    }
-
-    public List<Customer> findCustomersByLastName(String lastName) {
-        return customerRepository.findCustomersByLastName(lastName);
     }
 }

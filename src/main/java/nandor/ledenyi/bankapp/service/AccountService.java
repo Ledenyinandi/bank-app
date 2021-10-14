@@ -1,15 +1,13 @@
 package nandor.ledenyi.bankapp.service;
 
 import nandor.ledenyi.bankapp.entity.Account;
-import nandor.ledenyi.bankapp.entity.AccountType;
-import nandor.ledenyi.bankapp.entity.Customer;
 import nandor.ledenyi.bankapp.exception.EntityNotFoundException;
-import nandor.ledenyi.bankapp.exception.IllegalAccountTypeException;
 import nandor.ledenyi.bankapp.repository.AccountRepository;
 import nandor.ledenyi.bankapp.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class AccountService {
@@ -31,31 +29,18 @@ public class AccountService {
     }
 
     public Account save(Account account) {
-        if (!account.getAccountType().equals(AccountType.CHECKING) ||
-                !account.getAccountType().equals(AccountType.SAVINGS) ||
-                !account.getAccountType().equals(AccountType.CERTIFICATE_OF_DEPOSIT) ||
-                !account.getAccountType().equals(AccountType.MONEY_MARKET) ||
-                !account.getAccountType().equals(AccountType.RETIREMENT)) {
-            throw new IllegalAccountTypeException();
-        }
-        if (account.getCustomers() == null || account.getCustomers() != customerRepository.findCustomersByAccounts(account.getId())) {
+        if (account.getCustomer().getId() == null || !Objects.equals(customerRepository.findById(account.getCustomer().getId()).orElse(null), account.getCustomer())) {
             throw new EntityNotFoundException();
         }
         return accountRepository.save(account);
     }
 
+    public Account update(Account account, Long id) {
+        account.setId(id);
+        return save(account);
+    }
+
     public void deleteById(Long id) {
         accountRepository.deleteById(id);
     }
-
-    public void addCustomerToAccount(Long customerId, Long accountId) {
-        Customer customerToAdd = customerRepository.findById(customerId).orElseThrow(EntityNotFoundException::new);
-        Account account1 = findById(accountId);
-        account1.addCustomer(customerToAdd);
-    }
-
-    public List<Account> findAccountsByCustomer(Long customerId) {
-        return accountRepository.findAccountsByCustomers(customerId);
-    }
-
 }
