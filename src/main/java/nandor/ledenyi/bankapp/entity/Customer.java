@@ -43,6 +43,19 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Account> accounts;
 
+    public Customer(Long id, String lastName, String firstName, String country, String city, String address,
+                    String zip, String phoneNumber, String email) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.country = country;
+        this.city = city;
+        this.address = address;
+        this.zip = zip;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

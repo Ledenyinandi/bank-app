@@ -35,4 +35,16 @@ public class Account {
     @JsonIgnore
     @OneToMany(mappedBy = "account")
     private List<Transaction> transaction;
+
+    public Account(Long id, String accountNumber, AccountType accountType, AccountStatus accountStatus, double balance,
+                   double beginBalance, LocalDateTime beginTime, Customer customer) {
+        this.id = id;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.accountStatus = accountStatus;
+        this.balance = balance;
+        this.beginBalance = beginBalance;
+        this.beginTime = beginTime;
+        this.customer = customer;
+    }
 }
